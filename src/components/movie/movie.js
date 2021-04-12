@@ -3,7 +3,7 @@
  * @Author: cui
  * @Date: 2021-04-12 11:06:11
  * @LastEditors: cui
- * @LastEditTime: 2021-04-12 12:23:08
+ * @LastEditTime: 2021-04-12 16:54:19
  */
 
 const { fetchMovieActionCreator } = require('../../modules/movies.js')
@@ -39,6 +39,7 @@ class Movie extends React.Component {
     )
   }
   componentWillMount () {
+    debugger
     this.props.fetchMovieActionCreator(this.props.params.id)
   }
 
