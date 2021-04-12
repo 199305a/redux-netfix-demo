@@ -3,19 +3,27 @@
  * @Author: cui
  * @Date: 2021-04-12 11:06:11
  * @LastEditors: cui
- * @LastEditTime: 2021-04-12 12:19:12
+ * @LastEditTime: 2021-04-12 17:41:11
  */
-const React = require('react');
-const { Router, Route, IndexRoute, browserHistory } = require('react-router');
-const App = require('./components/app/app.js');
-const Movie = require('./components/movie/movie.js');
-const Movies = require('./components/movies/movies.js');
+const React = require('react')
+const {
+  Router,
+  Route,
+  IndexRoute,
+  browserHistory
+} = require('react-router')
+const App = require('components/app/app')
+const Movies = require('components/movies/movies.js')
+const Movie = require('components/movie/movie.js')
+
 module.exports = (
+  // Provides either browser or hash history to the router
   <Router history={browserHistory}>
     <Route path="/" component={App}>
-      {/* 默认路由 */}
+      {/* Defines the index route: the route for the empty URL */}
       <IndexRoute component={Movies} />
       <Route path="movies" component={Movies}>
+        {/* Defines the movie ID URL parameter with a colon */}
         <Route path=":id" component={Movie} />
       </Route>
     </Route>

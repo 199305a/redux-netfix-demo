@@ -3,7 +3,7 @@
  * @Author: cui
  * @Date: 2021-04-12 11:06:11
  * @LastEditors: cui
- * @LastEditTime: 2021-04-12 17:02:33
+ * @LastEditTime: 2021-04-12 19:01:57
  */
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const { CleanWebpackPlugin } = require('clean-webpack-plugin')
@@ -23,6 +23,13 @@ module.exports = {
     path: path.join(__dirname, 'build'),
     filename: '[name].js',
     publicPath: './'
+  },
+  target: 'web',
+  resolve: {
+    modules: [
+      path.join(__dirname, "src"),
+      "node_modules"
+    ]
   },
   module: {
     rules: [
@@ -55,10 +62,5 @@ module.exports = {
   mode: 'development',
   plugins: [
     new CleanWebpackPlugin(),
-    new HtmlWebpackPlugin({
-      title: 'React,webpack5 and Babel7',
-      template: 'index.html',
-      filename: 'index.html',
-    }),
   ],
 }
