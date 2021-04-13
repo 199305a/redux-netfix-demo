@@ -1,14 +1,14 @@
 /*
  * @Descripttion:
  * @Author: cui
- * @Date: 2021-04-12 18:38:59
+ * @Date: 2021-04-12 21:16:13
  * @LastEditors: cui
- * @LastEditTime: 2021-04-12 19:10:03
+ * @LastEditTime: 2021-04-12 21:44:30
  */
-
-const { GraphQLSchema, GraphQLObjectType, GraphQLList, GraphQLString, GraphQLInt, GraphQLFloat }
-  = require('graphql')
 const movies = require('./movies.json')
+const { GraphQLSchema, GraphQLList, GraphQLString, GraphQLObjectType, GraphQLInt,
+  GraphQLFloat
+} = require('graphql')
 
 const movie = new GraphQLObjectType({
   name: 'Movie',
@@ -18,9 +18,7 @@ const movie = new GraphQLObjectType({
     }
   },
   cover: {
-
     type: GraphQLString
-
   },
   year: {
     type: GraphQLString
@@ -37,28 +35,22 @@ const movie = new GraphQLObjectType({
         }
       }
     }))
-  },
+  }
 })
+
 module.exports = new graphql.GraphQLSchema({
-  query: new graphql.GraphQLObjectType({
+  query: new GraphQLObjectType({
     name: 'Query',
     fields: {
       movies: {
-        type: new graphql.GraphQLList(new graphql.GraphQLObjectType({
-          name: 'Movie',
-          fields: {
-            title: {
-              type: graphql.GraphQLString
-            }
-          }
-        })),
+        type: new graphql.GraphQLList(movie),
         resolve: () => movies
       },
       movie: {
         type: movie,
         args: {
           index: {
-            type: GraphQLInt,
+            type: GraphQLInt
           }
         },
         resolve: (r, { index }) => movies[index - 1]

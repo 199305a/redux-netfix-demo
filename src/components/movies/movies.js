@@ -3,7 +3,7 @@
  * @Author: cui
  * @Date: 2021-04-12 11:06:11
  * @LastEditors: cui
- * @LastEditTime: 2021-04-12 12:23:16
+ * @LastEditTime: 2021-04-12 23:37:08
  */
 
 const { fetchMoviesActionCreator } = require('../../modules/movies.js')
@@ -12,6 +12,7 @@ const React = require('react')
 const { Link } = require('react-router')
 const movies = require('../../movies.json')
 const styles = require('./movies.css')
+const clean = require('clean-tagged-string').default
 class Movies extends React.PureComponent {
   render () {
     const {
@@ -41,8 +42,25 @@ class Movies extends React.PureComponent {
    * @memberof Movies
    */
   componentWillMount () {
-
+    this.fetchMovie()
     // this.props.fetchMovies(movies)
+  }
+
+  fetchMovie (id = this.props.params.id) {
+    const query = clean`{
+      movie(index:${id}){
+        title,
+        cover,
+        year,
+        starring {
+          name
+        }
+      }
+    }`
+    axios.get(`/q?query=${query}`)
+      .then(response => {
+        this.props.fetchMovie(response)
+      })
   }
   componentDidMount () {
     fetch('src/movies.json', { method: 'GET' })
