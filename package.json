@@ -6,7 +6,7 @@
   "scripts": {
     "build": "concurrently \"./node_modules/.bin/webpack --watch --config webpack.config.js\" \"./node_modules/.bin/webpack --watch --config webpack.server.config.js\"",
     "start": "nodemon ./build/server.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "jest"
   },
   "keywords": [],
   "author": "",
@@ -25,6 +25,7 @@
     "css-loader": "^5.2.1",
     "file-loader": "^6.2.0",
     "html-webpack-plugin": "^5.3.1",
+    "jest-cli": "^26.6.3",
     "nodemon": "^2.0.7",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",

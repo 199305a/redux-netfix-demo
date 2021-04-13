@@ -3,7 +3,7 @@
  * @Author: cui
  * @Date: 2021-04-12 21:09:16
  * @LastEditors: cui
- * @LastEditTime: 2021-04-12 23:55:26
+ * @LastEditTime: 2021-04-13 10:14:45
 -->
 # redux-netfix-demo
 >实现server端
@@ -32,3 +32,4 @@ connect(
 
 
 单元测试70% 继承测试20% 验收测试10%
+flow是JS静态类型检查库 Jasmine带有一个断言语言的功能丰富的测试框架 
